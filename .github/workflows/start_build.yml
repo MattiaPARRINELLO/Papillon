@@ -26,8 +26,8 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Npm Install
-        run: npm install 
+      - name: Setup NPM
+        run: npm install
 
       - name: Install dependencies
         run: npm ci
@@ -122,7 +122,7 @@ jobs:
           fi
 
       - name: Upload IPA
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ios-app
           path: ios/build/Papillon.ipa
@@ -139,7 +139,7 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install npm
+      - name: Setup NPM
         run: npm install
 
       - name: Install dependencies
@@ -166,13 +166,13 @@ jobs:
           ./gradlew bundleRelease
 
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: android-apk
           path: android/app/build/outputs/apk/release/app-release.apk
 
       - name: Upload AAB
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: android-aab
           path: android/app/build/outputs/bundle/release/app-release.aab
@@ -184,13 +184,13 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Download iOS artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ios-app
           path: ios-app
 
       - name: Download Android AAB artifact
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: android-aab
           path: android-aab
